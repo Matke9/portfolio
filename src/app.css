@@ -3,4 +3,9 @@
 @import 'tailwindcss/utilities';
 :root{
 --dark: #131515;
+--dark-grey: #191b1a;
+--grey: #2B2C28;
+--dark-green: #307165;
+--accent-dark: #339989;
+--accent-light: #7de2d1;
 }

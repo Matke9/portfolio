@@ -17,7 +17,7 @@
 <ParaglideJS {i18n}>
 	<div class="flex h-screen"> 
 		<VerticalNav {navItems}></VerticalNav>
-		<div class="h-screen w-1 bg-green-500"></div>
+		<div class="h-screen w-1 bg-gradient-to-t from-[var(--dark-green)] via-[var(--accent-dark)] to-[var(--accent-light)]"></div>
 		<div class="bg-[var(--dark)] text-white w-full pl-10 pt-10">
 			{@render children()}
 		</div>

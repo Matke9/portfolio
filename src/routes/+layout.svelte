@@ -17,7 +17,8 @@
 <ParaglideJS {i18n}>
 	<div class="flex h-screen"> 
 		<VerticalNav {navItems}></VerticalNav>
-		<div>
+		<div class="h-screen w-1 bg-green-500"></div>
+		<div class="bg-[var(--dark)] text-white w-full pl-10 pt-10">
 			{@render children()}
 		</div>
 	</div>

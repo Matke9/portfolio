@@ -8,7 +8,7 @@ type NavItem = {
     export let navItems: NavItem[] = [];
 </script>
 
-<nav class="h-screen w-64 bg-[var(--dark-grey)] text-white flex flex-col p-4 space-y-4 justify-center">
+<nav class="h-screen w-64 bg-[var(--dark-grey)] text-white flex flex-col p-4 space-y-4 justify-center z-10">
     <img src="/LogoMMatovic.png" alt="mm" class="h-40 w-40 fixed top-3 left-3 bg-no-repeat bg-cover" />
     <ul class="space-y-2">
         {#each navItems as item}

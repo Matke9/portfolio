@@ -3,6 +3,7 @@
 	import { i18n } from '$lib/i18n';
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
 	import VerticalNav from '$lib/VerticalNav.svelte';
+	import Background from '$lib/Background.svelte';
 	let { children } = $props();
 
 	const navItems = [
@@ -18,7 +19,8 @@
 	<div class="flex h-screen"> 
 		<VerticalNav {navItems}></VerticalNav>
 		<div class="h-screen w-1 bg-gradient-to-t from-[var(--dark-green)] via-[var(--accent-dark)] to-[var(--accent-light)]"></div>
-		<div class="bg-[var(--dark)] text-white w-full pl-10 pt-10">
+		<div class="bg-[var(--dark)] text-white w-full">
+			<Background></Background>
 			{@render children()}
 		</div>
 	</div>

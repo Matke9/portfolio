@@ -1,2 +1,4 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<div class="pl-10 pt-10">
+    <h1>HI, MY NAME IS <div>MIHAILO MATOVIC</div></h1>
+    <p>GAME AND WEB DEVELOPER FROM SERBIA</p>
+</div>

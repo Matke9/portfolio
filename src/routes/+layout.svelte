@@ -9,9 +9,8 @@
 
 	const navItems = [
 		{ href: '/', label: 'Home'},
-		{ href: '/about', label: 'About me'},
 		{ href: '/projects', label: 'Projects'},
-		{ href: '/education&experiences', label: 'Education & Experiences'},
+		{ href: '/about', label: 'About me'},
 		{ href: '/contact', label: 'Contact me'}
 	]
 </script>
@@ -32,12 +31,12 @@
 
 <style>
 @keyframes rotate-out {
-  to { transform: rotateY(90deg) rotateX(-15deg) rotateZ(-15deg) scale(0.5); }
+  to { transform: rotateY(90deg) rotateX(-10deg) scale(0.8); }
 }
 @keyframes rotate-in {
-  0% { transform: rotateY(-90deg) rotateX(15deg) rotateZ(15deg) scale(0.5); }
-  50% {transform: rotateY(-90deg) rotateX(15deg) rotateZ(15deg) scale(0.5);}
-  100% { transform: rotateY(0deg) rotateX(0deg) rotateZ(0deg) scale(1); }
+  0% { transform: rotateY(-90deg) rotateX(10deg) scale(0.8); }
+  50% {transform: rotateY(-90deg) rotateX(10deg) scale(0.8);}
+  100% { transform: rotateY(0deg) rotateX(0deg) scale(1); }
 }
 
 .wrapper {

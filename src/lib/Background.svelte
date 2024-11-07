@@ -111,12 +111,14 @@
     }});
 </script>
 
-<div bind:this={parent} class="absolute w-full h-full m-0 p-0">
-    <canvas bind:this={canvas} class="absolute top-0 left-0 m-0 p-0"></canvas>
+<div bind:this={parent} class="absolute top-0 left-[14.5rem] h-full" style="width: calc(100% - 14.5rem); overflow-hidden;">
+    <canvas bind:this={canvas} class="absolute top-0 left-0 w-full h-full"></canvas>
 </div>
 
 <style>
-    canvas {
-        z-index: 0;
+    canvas, div {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
     }
 </style>

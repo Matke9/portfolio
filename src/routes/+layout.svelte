@@ -20,8 +20,8 @@
 	<ViewTransition/>
 		<div class="flex h-screen w-screen"> 
 		<VerticalNav {navItems}></VerticalNav>
-		<div class="stripe h-screen w-1 bg-gradient-to-t from-[var(--dark-green)] via-[var(--accent-dark)] to-[var(--accent-light)] "></div>
-		<div class="block text-white w-full bg-[var(--dark)] wrapper">
+		<div class="stripe h-screen min-w-1 bg-gradient-to-t from-[var(--dark-green)] via-[var(--accent-dark)] to-[var(--accent-light)] "></div>
+		<div class="block text-white w-full bg-[var(--dark)] wrapper p-52">
 			<Background></Background>
 			{@render children()}
 		</div>

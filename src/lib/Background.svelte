@@ -111,7 +111,7 @@
     }});
 </script>
 
-<div bind:this={parent} class="absolute top-0 left-[14.5rem] h-full" style="width: calc(100% - 14.5rem); overflow-hidden;">
+<div bind:this={parent} class="absolute top-0 left-[16.25rem] h-full z-[-1]" style="width: calc(100% - 16.25rem); overflow-hidden;">
     <canvas bind:this={canvas} class="absolute top-0 left-0 w-full h-full"></canvas>
 </div>
 

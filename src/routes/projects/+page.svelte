@@ -14,21 +14,27 @@ import { onMount } from 'svelte';
 
 <div class="flex flex-wrap">
     {#each projects as project}
-    <div class="z-[1] project-card rounded-xl bg-[var(--grey)] bg-cover
-     bg-no-repeat w-56 h-56 flex flex-wrap flex-col justify-end m-6"
-      style="background-image: url(projects/{project.imageUrl})">
+    <a href="projects/{project.slug}" class="z-[1] rounded-xl bg-[var(--grey)] bg-cover
+     bg-no-repeat w-56 h-56 flex flex-wrap flex-col justify-end m-6 image"
+      style="background-image: url(projects/{project.imageUrl}); --image: '{project.imageUrl}';">
       <div class="absolute l-0 t-0 bg-gradient-to-t from-[#000000ff] via-[#00000000] via-80% to-[#00000000]
        w-56 h-56"></div>
       <div class="flex flex-wrap flex-col justify-end p-2">
-        <h2 class="z-[1] font-title text-lg">{project.title}</h2>
+        <h2 class="z-[1] font-title text-lg title" style="--title: '{project.title}'">{project.title}</h2>
         <p class="z-[1]">
           {project.description.length > 50 
             ? `${project.description.slice(0, 50)}...` 
             : project.description}
         </p>
       </div>
-    </div>
+    </a>
     {/each}
 </div>
 <style>
+  .image{
+    view-transition-name: var(--image);
+  }
+  .title{
+    view-transition-name: var(--title);
+  }
 </style>

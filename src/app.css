@@ -23,8 +23,8 @@
     "YTLC" 500;
 }
 
-    .box-glow{
-        -webkit-box-shadow:0px 0px 19px 4px var(--accent-light);
-        -moz-box-shadow: 0px 0px 19px 4px var(--accent-light);
-        box-shadow: 0px 0px 19px 4px var(--accent-light);
-    }
+.box-glow{
+  -webkit-box-shadow:0px 0px 19px 4px var(--accent-light);
+  -moz-box-shadow: 0px 0px 19px 4px var(--accent-light);
+  box-shadow: 0px 0px 19px 4px var(--accent-light);
+}

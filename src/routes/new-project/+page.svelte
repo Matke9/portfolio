@@ -8,7 +8,7 @@ import { collection, addDoc } from 'firebase/firestore';
   let imageUrl = '';
 
 
-  // Handle form submission
+  // Handle form submissions
   const handleSubmit = async () => {
     if (imageUrl === '') return alert('Please select an image');
     if (title === '') return alert('Title required');

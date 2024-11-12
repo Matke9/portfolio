@@ -12,6 +12,6 @@
         text-shadow: var(--accent-light) 0px 0px 19px;
     }
 .bg-ja{
-background-image: url("Ja.jpg");
+background-image: url("/Ja.jpg");
 }
 </style>

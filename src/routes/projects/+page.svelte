@@ -9,6 +9,10 @@
 	onMount(async () => {
 		const querySnapshot = await getDocs(collection(firestore, 'projects'));
 		projects = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+		setTimeout(() => {
+			console.log(getComputedStyle(document.documentElement).getPropertyValue('--image'));
+			console.log(getComputedStyle(document.documentElement).getPropertyValue('--title'));
+		}, 100);
 	});
 </script>
 
@@ -18,8 +22,7 @@
 			href="projects/{project.slug}"
 			class="imgT z-[1] m-6 flex
      h-56 w-56 flex-col flex-wrap justify-end rounded-xl bg-[var(--grey)] bg-cover bg-no-repeat"
-			style="background-image: url(projects/{project.imageUrl});"
-			style:--image={project.imageUrl}
+			style="--image: url('projects/{project.imageUrl}'); background-image: var(--image);"
 		>
 			<div
 				class="l-0 t-0 absolute h-56 w-56 bg-gradient-to-t from-[#000000ff] via-[#00000000]

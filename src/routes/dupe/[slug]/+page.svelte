@@ -1,11 +1,17 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	let a = 'nigga';
 
-	onMount(async () => {
-		setTimeout(() => {
-			console.log(getComputedStyle(document.documentElement).getPropertyValue('--image'));
-			console.log(getComputedStyle(document.documentElement).getPropertyValue('--title'));
-		}, 100);
+	onMount(() => {
+		// Get the DOM elements
+		const imgElement = document.querySelector('.imgT') as HTMLElement;
+		const titleElement = document.querySelector('.titT') as HTMLElement;
+
+		if (imgElement && titleElement) {
+			// Set the view-transition-name properties directly
+			imgElement.style.setProperty('view-transition-name', a);
+			titleElement.style.setProperty('view-transition-name', 'title-view');
+		}
 	});
 </script>
 
@@ -13,16 +19,18 @@
 	<div
 		class="imgT z-10 bg-cover bg-no-repeat"
 		style="--image: url('/example.jpg');
-         background-image: url('/example.jpg'); width: 100px; height: 100px"
+         background-image: url('/example.jpg'); width: 100px; height: 100px; view-transition-name: var(--nigga);"
 	></div>
-	<h2 class="titT" style="--title: 'Example';">Example</h2>
+	<h2 class="titT" style="--title: 'Example'; view-transition-name: var(--nigga2);">Example</h2>
 </div>
-
+<!-- 
 <style>
 	.imgT {
-		view-transition-name: var(--image);
+		/* view-transition-name: var(--image);*/
+		/* view-transition-name: mojcale; */
 	}
 	.titT {
-		view-transition-name: var(--title);
+		/* view-transition-name: var(--title); */
+		/* view-transition-name: mojcalee; */
 	}
-</style>
+</style> -->

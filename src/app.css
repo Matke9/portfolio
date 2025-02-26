@@ -30,3 +30,12 @@
   -moz-box-shadow: 0px 0px 19px 4px var(--accent-light);
   box-shadow: 0px 0px 19px 4px var(--accent-light);
 }
+
+html, body {
+  -ms-overflow-style: none;  /* For Internet Explorer */
+  scrollbar-width: none;  /* For Firefox */
+}
+
+::-webkit-scrollbar {
+  display: none;  /* For Chrome, Safari, and Edge */
+}

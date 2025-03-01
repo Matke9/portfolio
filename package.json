@@ -42,6 +42,7 @@
 		"@inlang/paraglide-sveltekit": "^0.11.1",
 		"@libsql/client": "^0.9.0",
 		"drizzle-orm": "^0.33.0",
+		"emailjs-com": "^3.2.0",
 		"firebase": "^11.0.1"
 	}
 }

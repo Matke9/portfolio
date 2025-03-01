@@ -1,4 +1,8 @@
-<div class="white-text-glow flex flex-col flex-wrap content-center justify-center p-16">
+<script>
+	import ProgressBar from '$lib/ProgressBar.svelte';
+</script>
+
+<div class="white-text-glow flex flex-col flex-wrap content-center justify-center p-20">
 	<img
 		src="AboutMe.png"
 		alt="About me"
@@ -17,10 +21,15 @@
 		<p>Programming Languages</p>
 		<ul>
 			<li>C#</li>
+			<ProgressBar percentage={80} />
 			<li>C, C++</li>
+			<ProgressBar percentage={60} />
 			<li>Java</li>
+			<ProgressBar percentage={60} />
 			<li>Python</li>
+			<ProgressBar percentage={30} />
 			<li>HTML, CSS, JavaScript</li>
+			<ProgressBar percentage={80} />
 		</ul>
 		<h2>🚀 What Drives Me</h2>
 		<p>

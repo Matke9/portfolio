@@ -1,3 +1,29 @@
+<script lang="ts">
+	export let data: {
+		project: { slug: string; imageUrl: string; title: string; description: string };
+	};
+</script>
+
+<div class="flex flex-col flex-wrap items-center">
+	<div
+		class="box-glow h-72 w-72 rounded-xl bg-[var()] bg-gradient-to-r from-[var(--accent-dark)] to-[var(--accent-light)] bg-cover bg-no-repeat p-1"
+	>
+		<div
+			class="imgT h-full w-full rounded-xl bg-[var(--grey)] bg-cover bg-no-repeat"
+			style={`background-image: url('/projects/${data.project.imageUrl}'); view-transition-name: image-${data.project.slug};`}
+		></div>
+	</div>
+	<h2
+		class="font-title titT transform text-3xl duration-200 ease-in-out hover:scale-105"
+		style={`view-transition-name: title-${data.project.slug};`}
+	>
+		{data.project.title}
+	</h2>
+
+	<!-- Description -->
+	<p class="mt-4 flex w-72 text-wrap text-base">{data.project.description}</p>
+</div>
+
 <!-- <script lang="ts">
 	import { onMount } from 'svelte';
 
@@ -30,28 +56,3 @@
 		{data.project.title}
 	</h2>
 </div> -->
-<script lang="ts">
-	export let data: {
-		project: { slug: string; imageUrl: string; title: string; description: string };
-	};
-</script>
-
-<div class="flex flex-col flex-wrap items-center">
-	<div
-		class="box-glow h-72 w-72 rounded-xl bg-[var()] bg-gradient-to-r from-[var(--accent-dark)] to-[var(--accent-light)] bg-cover bg-no-repeat p-1"
-	>
-		<div
-			class="imgT h-full w-full rounded-xl bg-[var(--grey)] bg-cover bg-no-repeat"
-			style={`background-image: url('/projects/${data.project.imageUrl}'); view-transition-name: image-${data.project.slug};`}
-		></div>
-	</div>
-	<h2
-		class="font-title titT transform text-3xl duration-200 ease-in-out hover:scale-105"
-		style={`view-transition-name: title-${data.project.slug};`}
-	>
-		{data.project.title}
-	</h2>
-
-	<!-- Description -->
-	<p class="mt-4 flex w-72 text-wrap text-base">{data.project.description}</p>
-</div>

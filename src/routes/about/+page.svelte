@@ -4,7 +4,7 @@
 
 <div class="white-text-glow flex flex-col flex-wrap content-center justify-center p-20">
 	<img
-		src="AboutMe.png"
+		src="AboutMe.webp"
 		alt="About me"
 		class="w-[30vw] transform self-center pb-6 duration-200 ease-in-out hover:scale-105"
 	/>

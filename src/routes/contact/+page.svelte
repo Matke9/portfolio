@@ -15,9 +15,9 @@
 		successMessage = '';
 		errorMessage = '';
 
-		const serviceID = 'your_service_id';
-		const templateID = 'your_template_id';
-		const userID = 'your_user_id';
+		const serviceID = 'portfolio';
+		const templateID = 'template_puuk1cd';
+		const userID = 'M1DU54rMXax9sb5AO';
 
 		try {
 			await emailjs.send(serviceID, templateID, { name, email, subject, message }, userID);

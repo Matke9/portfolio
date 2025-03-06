@@ -45,9 +45,6 @@
 		<div class="flex min-h-screen w-screen flex-row">
 			<VerticalNav {navItems}></VerticalNav>
 			<div
-				class="stripe min-h-screen min-w-1 bg-gradient-to-t from-[var(--dark-green)] via-[var(--accent-dark)] to-[var(--accent-light)]"
-			></div>
-			<div
 				class="wrapper h-inherit block flex w-full flex-wrap place-content-center bg-[var(--dark)] text-white"
 			>
 				<Background></Background>

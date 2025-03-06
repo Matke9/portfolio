@@ -1,62 +1,3 @@
-<!-- <script lang="ts">
-	import { firestore } from '$lib/firebase'; // Import the initialized firestore
-	import { collection, getDocs } from 'firebase/firestore';
-	import { onMount, tick } from 'svelte';
-
-	let projects: any[] = []; // Variable to store the fetched project data
-
-	// Fetch projects from Firestore
-	onMount(async () => {
-		const querySnapshot = await getDocs(collection(firestore, 'projects'));
-		projects = querySnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-
-		await tick();
-
-		const projectElements = document.querySelectorAll('.imgT') as NodeListOf<HTMLElement>;
-		const titleElements = document.querySelectorAll('.titT') as NodeListOf<HTMLElement>;
-		console.log(projectElements.length);
-		projectElements.forEach((element, index) => {
-			const project = projects[index];
-			if (project) {
-				element.style.setProperty('view-transition-name', `image-${project.imageUrl}`);
-				console.log(project.imageUrl);
-			}
-		});
-
-		titleElements.forEach((element, index) => {
-			const project = projects[index];
-			if (project) {
-				element.style.setProperty('view-transition-name', `title-${project.title}`);
-			}
-		});
-	});
-</script>
-
-<div class="flex flex-wrap">
-	{#each projects as project}
-		<a
-			href="projects/{project.slug}"
-			class="imgT z-[1] m-6 flex
-     h-56 w-56 flex-col flex-wrap justify-end rounded-xl bg-[var(--grey)] bg-cover bg-no-repeat"
-			style="background-image: url('projects/{project.imageUrl}');"
-		>
-			<div
-				class="l-0 t-0 absolute h-56 w-56 bg-gradient-to-t from-[#000000ff] via-[#00000000]
-       via-80% to-[#00000000]"
-			></div>
-			<div class="flex flex-col flex-wrap justify-end p-2">
-				<h2 class="font-title titT z-[1] text-lg">
-					{project.title}
-				</h2>
-				<p class="z-[1]">
-					{project.description.length > 50
-						? `${project.description.slice(0, 50)}...`
-						: project.description}
-				</p>
-			</div>
-		</a>
-	{/each}
-</div> -->
 <script lang="ts">
 	import { firestore } from '$lib/firebase';
 	import { collection, getDocs } from 'firebase/firestore';
@@ -76,43 +17,29 @@
 	>
 		PROJECTS
 	</h1>
-	<div class="flex flex-wrap">
+	<div class="flex flex-wrap justify-center">
 		{#each projects as project}
-			<!-- <a
-			href="/projects/{project.slug}"
-			class="m-6 flex h-56 w-56 flex-col justify-end rounded-xl bg-cover bg-no-repeat"
-			style={`background-image: url('/projects/${project.imageUrl}'); view-transition-name: image-${project.slug};`}
-		>
-			<div
-				class="l-0 t-0 absolute h-56 w-56 bg-gradient-to-t from-[#000000ff] via-[#00000000]
-       via-80% to-[#00000000]"
-			></div>
-			<h2 class="font-title z-[1] text-lg" style={`view-transition-name: title-${project.slug};`}>
-				{project.title}
-			</h2>
-		</a> -->
-
 			<a
 				href="projects/{project.slug}"
-				class="imgT box-glow z-[1] m-6 flex
-     h-56 w-56 flex-col flex-wrap justify-end rounded-lg bg-[var(--grey)] duration-200 ease-in-out hover:scale-105"
+				class="imgT box-glow z-[1] m-6 flex h-56 w-56 flex-col justify-end rounded-lg bg-[var(--grey)] duration-200 ease-in-out hover:scale-105 sm:h-64 sm:w-64 md:h-72 md:w-72"
 			>
-				<div class="l-0 t-0 absolute h-56 w-56 rounded-lg">
-					<div
-						class="absolute top-0 h-[9rem] w-full rounded-t-lg bg-cover bg-center bg-no-repeat"
-						style={`background-image: url('/projects/${project.imageUrl}'); view-transition-name: image-${project.slug};`}
-					></div>
-					<div
-						class="absolute bottom-0 h-20 w-full rounded-b-lg bg-gradient-to-t from-[--dark-green] to-[--accent-dark]"
-					></div>
-				</div>
-				<div class="flex flex-col flex-wrap justify-end p-2">
-					<h2
-						class="font-title titT z-[1] text-xl"
-						style={`view-transition-name: title-${project.slug};`}
-					>
-						{project.title}
-					</h2>
+				<div class="relative h-56 w-56 rounded-lg sm:h-64 sm:w-64 md:h-72 md:w-72">
+					<div class="absolute inset-0 h-full w-full rounded-lg">
+						<div
+							class="absolute top-0 h-[65%] w-full rounded-t-lg bg-cover bg-center bg-no-repeat"
+							style={`background-image: url('/projects/${project.imageUrl}'); view-transition-name: image-${project.slug};`}
+						></div>
+						<div
+							class="absolute bottom-0 h-[35%] w-full rounded-b-lg bg-gradient-to-t from-[--dark-green] to-[--accent-dark]"
+						>
+							<h2
+								class="font-title titT m-3 text-xl sm:text-2xl md:text-3xl"
+								style={`view-transition-name: title-${project.slug};`}
+							>
+								{project.title}
+							</h2>
+						</div>
+					</div>
 				</div>
 			</a>
 		{/each}
@@ -122,5 +49,13 @@
 <style>
 	.div {
 		text-shadow: var(--accent-light) 0px 0px 19px;
+	}
+
+	@media (max-width: 640px) {
+		.imgT {
+			max-width: 300px;
+			height: auto;
+			aspect-ratio: 1/1;
+		}
 	}
 </style>

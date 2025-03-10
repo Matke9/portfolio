@@ -31,7 +31,7 @@
 
 <!-- Navigation Menu -->
 <nav
-	class="stripe-border fixed z-40 flex min-h-screen w-56 min-w-56 max-w-[70%] flex-col bg-gradient-to-b from-[#848484] to-[#1E1E1E] text-white transition-transform duration-200 ease-in-out"
+	class="stripe-border fixed z-40 flex min-h-screen w-56 min-w-56 max-w-[300px] max-w-[70%] flex-col bg-gradient-to-b from-[#848484] to-[#1E1E1E] text-white transition-transform duration-200 ease-in-out"
 	class:translate-x-0={isMenuOpen}
 	class:-translate-x-full={!isMenuOpen}
 >

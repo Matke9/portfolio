@@ -76,13 +76,4 @@
 	.wrapper {
 		view-transition-name: wrapper;
 	}
-
-	/* ::view-transition-old(wrapper) {
-		animation: rotate-out 0.5s forwards;
-		animation-timing-function: ease-out;
-	}
-	::view-transition-new(wrapper) {
-		animation: rotate-in 1s forwards;
-		animation-timing-function: ease-in;
-	} */
 </style>

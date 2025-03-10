@@ -16,7 +16,7 @@
 	const maxDistance = 180;
 
 	function createDots() {
-		for (let i = 0; i < numDots; i++) {
+		for (let i = 0; i < (numDots * parentWidth) / 1920; i++) {
 			dots.push({
 				x: Math.random() * parentWidth,
 				y: Math.random() * parentHeight,
@@ -110,8 +110,8 @@
 
 <div
 	bind:this={parent}
-	class="fixed left-[14.5rem] top-0 z-[-1] h-full"
-	style="width: calc(100% - 14.5rem); overflow-hidden;"
+	class="widt fixed left-[14.2rem] top-0 z-[-1] h-full md:left-0"
+	style="width: calc(100% - 14.2rem); overflow-hidden;"
 >
 	<canvas bind:this={canvas} class="absolute left-0 top-0 h-full w-full"></canvas>
 </div>
@@ -122,5 +122,15 @@
 		margin: 0;
 		padding: 0;
 		box-sizing: border-box;
+	}
+	.widt {
+		left: 14.2rem;
+		width: calc(100% - 14.2rem);
+	}
+	@media (max-width: 768px) {
+		.widt {
+			left: 0;
+			width: 100vw !important;
+		}
 	}
 </style>

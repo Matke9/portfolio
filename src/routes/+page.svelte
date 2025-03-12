@@ -1,5 +1,5 @@
 <div
-	class="font-title flex h-full flex-col items-center justify-center pb-24 pl-10 pt-10 font-black md:flex-row md:flex-wrap"
+	class="font-title flex h-full flex-col items-center justify-center pb-24 pl-0 pt-10 font-black md:flex-row md:flex-wrap md:pl-10"
 >
 	<!-- Image Container -->
 	<div
@@ -7,7 +7,9 @@
 	></div>
 
 	<!-- Text Container -->
-	<div class="flex flex-col items-center justify-center text-center md:items-start md:text-left">
+	<div
+		class="md: flex max-w-[70%] flex-col items-center justify-center text-center md:items-start md:text-left"
+	>
 		<div class="w-fit transform text-3xl duration-200 ease-in-out hover:scale-105">
 			HI, MY NAME IS
 		</div>
@@ -17,7 +19,7 @@
 			MIHAILO MATOVIC
 		</div>
 		<div
-			class="flex w-full max-w-[500px] transform flex-wrap text-4xl duration-200 ease-in-out hover:scale-105"
+			class="flex w-full max-w-[500px] max-w-[90%] transform flex-wrap text-4xl duration-200 ease-in-out hover:scale-105"
 		>
 			A GAME AND WEB DEVELOPER FROM SERBIA
 		</div>

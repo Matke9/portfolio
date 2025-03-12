@@ -6,7 +6,7 @@
 	<img
 		src="AboutMe.webp"
 		alt="About me"
-		class="w-[30vw] transform self-center pb-6 duration-200 ease-in-out hover:scale-105"
+		class="w-[50vw] min-w-[200px] transform self-center pb-6 duration-200 ease-in-out hover:scale-105 md:w-[30vw]"
 	/>
 	<div class="about flex flex-col content-center justify-center">
 		<h2>👋 Introduction</h2>

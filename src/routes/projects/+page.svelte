@@ -13,7 +13,7 @@
 
 <div class="flex h-full w-full flex-col flex-wrap content-center justify-center">
 	<h1
-		class="div absolute top-20 transform self-center text-center text-6xl duration-200 ease-in-out hover:scale-105"
+		class="div relative top-20 mb-24 transform self-center text-center text-6xl duration-200 ease-in-out hover:scale-105"
 	>
 		PROJECTS
 	</h1>

@@ -34,11 +34,12 @@
 </script>
 
 <div
-	class="flex h-80 w-[25em] flex-col justify-between rounded-xl bg-[var(--grey)] p-10 text-black"
+	class="flex min-h-80 w-[25em] flex-col justify-between rounded-xl bg-[var(--grey)] p-10 text-black"
 >
 	<input class="rounded" type="text" bind:value={title} placeholder="Project Title" />
-	<textarea class="rounded" bind:value={description} placeholder="Project Description"></textarea>
-	<textarea class="rounded" bind:value={skills} placeholder="Skills learned"></textarea>
+	<textarea class="min-h-20 rounded" bind:value={description} placeholder="Project Description"
+	></textarea>
+	<textarea class="min-h-20 rounded" bind:value={skills} placeholder="Skills learned"></textarea>
 	<input class="rounded" type="text" bind:value={slug} placeholder="Project Slug" />
 	<input class="rounded" type="text" bind:value={imageUrl} placeholder="Image Url" />
 	<button class="h-10 w-32 rounded bg-[var(--accent-dark)]" on:click={handleSubmit}

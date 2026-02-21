@@ -1,17 +1,15 @@
 import { error } from '@sveltejs/kit';
-import { collection, getDocs } from 'firebase/firestore';
-import { firestore } from '$lib/firebase'; 
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { firestore } from '$lib/firebase';
 
 export async function load({ params }) {
-  	let projects: any[] = []; 
-	const querySnapshot = await getDocs(collection(firestore, 'projects'));
-    projects = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-  
-	const project = projects.find((project) => project.slug === params.slug);
+	const q = query(collection(firestore, 'projects'), where('slug', '==', params.slug));
+	const querySnapshot = await getDocs(q);
 
-	if (!project) throw error(404, 'Not found'); // Correct usage of `error`
+	if (querySnapshot.empty) throw error(404, 'Not found');
 
-	return {
-		project
-	};
+	const docSnap = querySnapshot.docs[0];
+	const project = { id: docSnap.id, ...docSnap.data() };
+
+	return { project };
 }

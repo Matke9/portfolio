@@ -99,7 +99,7 @@
 						<div class="mt-auto flex flex-wrap gap-1 pt-2">
 							{#each project.skills
 								.split(',')
-								.map((s) => s.trim())
+								.map((s: string) => s.trim())
 								.filter(Boolean) as skill}
 								<span class="rounded-md bg-[var(--accent-dark)]/50 px-2 py-0.5 text-xs text-white"
 									>{skill}</span

@@ -4,6 +4,31 @@
 	import { onMount } from 'svelte';
 
 	let projects: any[] = [];
+	let selectedTag = 'All';
+
+	const tagColorClasses = [
+		'bg-emerald-700/70 text-emerald-200',
+		'bg-blue-700/70 text-blue-200',
+		'bg-purple-700/70 text-purple-200',
+		'bg-yellow-700/70 text-yellow-200',
+		'bg-pink-700/70 text-pink-200'
+	];
+
+	function tagColor(tag: string): string {
+		let hash = 0;
+		for (let i = 0; i < tag.length; i++) hash = tag.charCodeAt(i) + ((hash << 5) - hash);
+		return tagColorClasses[Math.abs(hash) % tagColorClasses.length];
+	}
+
+	function resolveImageUrl(url: string): string {
+		return url?.startsWith('http') ? url : `/projects/${url}`;
+	}
+
+	$: allTags = ['All', ...Array.from(new Set(projects.flatMap((p) => p.tags ?? [])))];
+	$: filtered =
+		selectedTag === 'All'
+			? projects
+			: projects.filter((p) => (p.tags ?? []).includes(selectedTag));
 
 	onMount(async () => {
 		const querySnapshot = await getDocs(collection(firestore, 'projects'));
@@ -11,35 +36,77 @@
 	});
 </script>
 
-<div class="flex h-full w-full flex-col flex-wrap content-center justify-center">
+<div class="flex h-full w-full flex-col content-center">
 	<h1
-		class="div relative top-16 mb-20 transform self-center text-center text-6xl duration-200 ease-in-out hover:scale-105"
+		class="page-title relative top-16 mb-20 transform self-center text-center text-6xl duration-200 ease-in-out hover:scale-105"
 	>
 		PROJECTS
 	</h1>
-	<div class="flex flex-wrap justify-center pb-8 pt-8">
-		{#each projects as project}
+
+	<!-- Tag filter -->
+	<div class="flex justify-center px-4 pb-2 pt-4">
+		<select
+			bind:value={selectedTag}
+			class="cursor-pointer rounded-lg border border-[var(--accent-dark)] bg-[var(--grey)] px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-[var(--accent-light)]"
+		>
+			{#each allTags as tag}
+				<option value={tag}>{tag}</option>
+			{/each}
+		</select>
+	</div>
+
+	<!-- Cards grid -->
+	<div
+		class="grid grid-cols-1 justify-items-center gap-8 px-8 pb-12 pt-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+	>
+		{#each filtered as project}
 			<a
 				href="projects/{project.slug}"
-				class="imgT box-glow z-[1] m-6 flex h-56 w-56 flex-col justify-end rounded-lg bg-[var(--grey)] duration-200 ease-in-out hover:scale-105 sm:h-64 sm:w-64 md:h-72 md:w-72"
+				class="box-glow flex w-full max-w-sm flex-col overflow-hidden rounded-xl bg-[var(--grey)] duration-200 ease-in-out hover:scale-105"
 			>
-				<div class="relative h-56 w-56 rounded-lg sm:h-64 sm:w-64 md:h-72 md:w-72">
-					<div class="absolute inset-0 h-full w-full rounded-lg">
-						<div
-							class="absolute top-0 h-[65%] w-full rounded-t-lg bg-cover bg-center bg-no-repeat"
-							style={`background-image: url('/projects/${project.imageUrl}'); view-transition-name: image-${project.slug};`}
-						></div>
-						<div
-							class="absolute bottom-0 h-[35%] w-full rounded-b-lg bg-gradient-to-t from-[--dark-green] to-[--accent-dark]"
-						>
-							<h2
-								class="font-title titT m-3 text-xl sm:text-2xl md:text-3xl"
-								style={`view-transition-name: title-${project.slug};`}
-							>
-								{project.title}
-							</h2>
+				<!-- Image -->
+				<div
+					class="h-48 w-full bg-cover bg-center bg-no-repeat"
+					style={`background-image: url('${resolveImageUrl(project.imageUrl)}'); view-transition-name: image-${project.slug};`}
+				></div>
+
+				<!-- Content -->
+				<div class="flex flex-1 flex-col gap-2 p-4">
+					<!-- Title -->
+					<h2
+						class="font-title text-xl font-bold text-white"
+						style={`view-transition-name: title-${project.slug};`}
+					>
+						{project.title}
+					</h2>
+
+					<!-- Short description -->
+					{#if project.shortDescription}
+						<p class="line-clamp-3 text-sm text-gray-300">{project.shortDescription}</p>
+					{/if}
+
+					<!-- Tags -->
+					{#if project.tags && project.tags.length > 0}
+						<div class="mt-1 flex flex-wrap gap-1">
+							{#each project.tags as tag}
+								<span class="rounded-full px-2 py-0.5 text-xs font-medium {tagColor(tag)}">{tag}</span>
+							{/each}
 						</div>
-					</div>
+					{/if}
+
+					<!-- Skills pills -->
+					{#if project.skills}
+						<div class="mt-auto flex flex-wrap gap-1 pt-2">
+							{#each project.skills
+								.split(',')
+								.map((s) => s.trim())
+								.filter(Boolean) as skill}
+								<span class="rounded-md bg-[var(--accent-dark)]/50 px-2 py-0.5 text-xs text-white"
+									>{skill}</span
+								>
+							{/each}
+						</div>
+					{/if}
 				</div>
 			</a>
 		{/each}
@@ -47,15 +114,7 @@
 </div>
 
 <style>
-	.div {
+	.page-title {
 		text-shadow: var(--accent-light) 0px 0px 19px;
-	}
-
-	@media (max-width: 640px) {
-		.imgT {
-			max-width: 300px;
-			height: auto;
-			aspect-ratio: 1/1;
-		}
 	}
 </style>
